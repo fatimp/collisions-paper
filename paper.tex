@@ -20,7 +20,7 @@
 
 \begin{document}
 \title{When two-point correlation function fails to describe a structure...}
-\author{Foo Bar}
+\author{Biba and Boba}
 \maketitle
 
 \section{Introduction}
@@ -199,7 +199,7 @@ trivial collisions like that.
 
 To find non-trivial collisions we firstly introduce a change of variables
 $x = z^{-1}$ which is justified by a symmetry of \cref{eq:s2z}. Secondly we
-introduce a notion of a reverse of a polynomial and palindrome polynomials.
+introduce a notion of a reverse \textcolor{red}{RECIPROCAL!} of a polynomial and palindrome polynomials.
 \begin{definition}
   A reverse of a polynomial $f(x)$ is a polynomial $x^{\deg f}f(x^{-1})$. A
   polynomial is called a palindrome if it is equal to its reverse.
@@ -343,11 +343,11 @@ and the \cref{alg:collisions} to finding non-trivial collisions.
 \begin{example}
   Consider a two-phase two-dimensional image \cref{fig:2d-example}. Its image
   under the Z-transform is
-  $f(z_1, z_2) = z_1^{-1} + z_1^{-2} + z_2^{-1} + z_1^{-1}z_2^{-1} +
-  z_1^{-2}z_2^{-1} + z_1^{-1}z_2^{-2}$. An image of the two-point correlation
-  function is $s_2(t_1, t_2) = 6 + 3t_1 + t_1^2 + 3t_2 + t_2^2 + \dots$. Only
-  the terms contributing to the ``axial'' two-point function are shown here for
-  the sake of brevity.
+  $f(z_1, z_2) = z_1^{-1} + z_1^{-2} + z_2^{-1} + z_1^{-1}z_2^{-1} + z_1^{-2}z_2^{-1} + z_1^{-1}z_2^{-2}$.
+  An image of the two-point correlation function is
+  $s_2(t_1, t_2) = 6 + 3t_1 + t_1^2 + 3t_2 + t_2^2 + \dots$.
+  Only the terms contributing to the ``axial'' two-point function are shown here
+  for the sake of brevity.
 \end{example}
 \begin{figure*}[tp]
   \centering
@@ -372,9 +372,8 @@ shift by $k$ elements to the right.
   $s_2(z) = 5 + 3(z+z^{-1}) + 2(z^2 + z^{-2}) + 2(z^3 + z^{-3}) + 2(z^4 +
   z^{-4}) + (z^5 + z^{-5})$.
   Taking $s_2(z) \mod x^7-1$ we obtain
-  $5 + 3z + 3z^6 + 2z^2 + 2z^5 + 2z^3 + 2z^4 + 2z^4 + 2z^3 + z^5 + z^2 \mod z^7
-  - 1 = 5 + 3z + 3z^2 + 4z^3 + 4z^4 + 3z^5 + 3z^6$. The two-point correlation
-  function is then $(5, 3, 3, 4, 4, 3, 3)$.
+  $5 + 3z + 3z^6 + 2z^2 + 2z^5 + 2z^3 + 2z^4 + 2z^4 + 2z^3 + z^5 + z^2 \mod z^7 - 1 = 5 + 3z + 3z^2 + 4z^3 + 4z^4 + 3z^5 + 3z^6$.
+  The two-point correlation function is then $(5, 3, 3, 4, 4, 3, 3)$.
 \end{example}
 
 Unfortunately, there is no known way to test a sequence for non-trivial
@@ -406,18 +405,10 @@ for some $c > 0$ and $\beta > 3$ if $\zeta_K$ has no zeros $\rho$ with
 $|1 - \rho| < (\log d)^\alpha/d$, $\alpha > \beta$ for all $K = \mathbb{Q}(a)$
 for any root $a$ of $f$.
 
-A stronger bound of the probability of the same factorization with higher
-reliance on the Riemann hypothesis is given by:
-\begin{equation}
-  p = 1 - \exp(-c \sqrt{d} / \log d)
-  \label{eq:prob-cyc-2}
-\end{equation}
-if the Riemann hypothesis holds for $\zeta_k$ for $K = \mathbb{Q}$ and all
-fields $K = \mathbb{Q}(a)$ where $a$ is a root of $f$.
-
 Now we will prove a simple lemma which connects these results with collisions in
 correlation functions.
-\begin{lemma}
+\begin{theorem}
+  \label{the:sequence}
   Let $A$ be a sufficiently long random sequence of 0's and 1's where each
   element is chosen randomly and independently with equal probability $1/2$ with
   exception of the first and the last elements which are 1's. Then, with
@@ -427,7 +418,7 @@ correlation functions.
   \end{equation*}
   for some $c > 0$, $\beta > 1$ the sequence $A$ of the length $d+1$ does not
   have non-trivial collisions in the two-point correlation function.
-\end{lemma}
+\end{theorem}
 \begin{proof}
   Let $f(x)$ be an image of $A$ under Z-transform and a change of variables
   $x = z^{-1}$. With probability at least $p$ it factors in $\mathbb{Z}[x]$ as
@@ -438,54 +429,58 @@ correlation functions.
   non-palindrome factor and hence $A$ does not have non-trivial collisions.
 \end{proof}
 
-For the multidimensional case, our bound is more pessimistic:
+To obtain some results for the multidimensional case, we need to prove an
+auxiliary result first.
 \begin{lemma}
-  Let $A$ be a sufficiently big random $D-dimensional$ array of 0's and 1's
-  where each element is chosen randomly and independently with equal probability
-  $1/2$ with exception of the first and the last elements found on the edge
-  $\mathcal{L}$, which are 1's. Then, with probability at least
-  \begin{equation*}
-    p = 1 - \sqrt{\frac{2}{\pi d}}
-  \end{equation*}
-  where $d+1$ is the length of $\mathcal{L}$, $A$ does not have non-trivial
-  collisions in the two-point correlation function.
+  \label{lem:factors}
+  Let $\phi$ be a homomorphism from $R[x]$ to $R'[x]$ and $\phi f \ne const$ if
+  $f \ne const$. When $f$ has no more irreducible factors (counted with their
+  repetitions) than $\phi f$.
 \end{lemma}
 \begin{proof}
-  Firstly, assume $D = 2$. Let $f(x_1, x_2) \in \mathbb{Z}[x_1][x_2]$ be an
-  image of $A$ under Z-transform and change of variables $x_i = z_i^{-1}$. Let
-  $\phi_l$ be a mapping $\mathbb{Z}[x_1][x_2] \rightarrow \mathbb{Z}[x_1]$ which
-  ``extracts'' the leading coefficient $f_l \in \mathbb{Z}[x_1]$ from a
-  bivariate polynomial $f$ and $\phi_f$ be a mapping
-  $\mathbb{Z}[x_1][x_2] \rightarrow \mathbb{Z}[x_1]$ which ``extracts'' the free
-  coefficient $f_0 \in \mathbb{Z}[x_1]$.
-
-  $\phi_f$ and $\phi_l$ are homomorphisms from multiplicative monoid
-  $\mathbb{Z}^*[x_1][x_2]$ to $\mathbb{Z}^*[x_1]$.
-  Indeed if $g = g_0 + g_1x_2 + \dots + g_nx_2^n$ and
-  $h = h_0 + h_1x_2 + \dots + h_mx_2^m$ then
-  \begin{align*}
-    \phi_f(g h) &= \phi_f[(g_0  h_0) + (g_0 h_1 + g_1 h_0)x_2 + \dots + (g_n
-      h_m) x_2^{n+m}] \\
-    &= g_0 h_0 = \phi_f(g) \phi_f(h) \qquad \text{and} \\
-    \phi_l(g h) &= \phi_l[(g_0  h_0) + (g_0 h_1 + g_1 h_0)x_2 + \dots + (g_n
-      h_m) x_2^{n+m}] \\
-    &= g_n h_m = \phi_l(g) \phi_l(h)
-  \end{align*}
-
-  Now, without loss of generality, assume that the free (resp. leading)
-  coefficient $f_k$ of $f$ has a degree $d$ and a non-zero free coefficient. If
-  it is irreducible in $\mathbb{Z}[x_1]$, then $f$ is irreducible in
-  $\mathbb{Z}[x_1][x_2]$. Indeed, if $f$ is not irreducible, then $f = p_1 p_2$
-  for some non-constant $p_1, p_2$. Applying $\phi = \phi_f$ (resp. $\phi_l$) to
-  this equality, we get $\phi(f) = f_k = \phi(p_1) \phi(p_2)$ for non-constant
-  $\phi(p_1), \phi(p_2)$ which contradicts with $f_k$ being irreducible. Using
-  \cref{eq:prob-irr} we obtain the least bound for the probability of $f$ being
-  irreducible. If $f$ is irreducible, then it cannot have two or more
-  non-palindrome factors and therefore cannot have non-trivial collisions, which
-  proves the lemma.
-
-  The proof for $D > 2$ is by recursion.
+  Suppose $f = \prod_{k=1}^n f_k^{m_k}$ where $f_k$ is irreducible in
+  $R[x]$. Applying $\phi$ to $f$ we get $\phi f = \prod_{k=1}^n (\phi f_k)^{m_k}$.
+  Since no $\phi f_k$ is constant, their product cannot be contracted to an
+  irreducible polynomial in $R'[x]$. Each factor $\phi f_k$ can be factored to
+  one or more irreducible polynomials in $R'[x]$ which proves the lemma.
 \end{proof}
+
+Now we get our main result:
+\begin{theorem}
+  Let $A$ be a 2-dimensional $D_1 \times D_2$ array of 0's and 1's where each
+  element is chosen randomly and independently with probability $1/2$ with
+  exception of three elements $A[0, 0]$, $A[D_1 - 1, 0]$ and $A[0, D_2 - 1]$,
+  which are 1's. Then $A$ does not have non-trivial collisions in the two-point
+  correlation function with probability $p \to 1$ as $D_1, D_2 \to \infty$.
+\end{theorem}
+\begin{proof}
+  Let $f(x, y)$ be an image of $A$ under Z-transform and a change of variables
+  $x = z_1^{-1}, y = z_2^{-1}$. Let $\phi f = f \mod y$ be a
+  ``partial evaluation'' homomorphism from $\mathbb{Z}[x, y]$ to
+  $\mathbb{Z}[x]$. Let $f_x(x) = \phi f = f(x,0)$. Under conditions of the
+  theorem $f(0) = 1$ and $d = \deg f_x = D_2 - 1$.  According to
+  \cref{eq:prob-irr} we have $P\{\text{$f_x$ is irreducible}\} \to 1$ with
+  $d \to \infty$.
+
+  We have three possible cases of factorization of $f$:
+  \begin{itemize}
+  \item $f$ is irreducible.
+  \item $f$ factors as $f(x, y) = g(x)h(y)$. In this case
+    $\phi h = h(0) = const$ and \cref{lem:factors} cannot be applied. According
+    to distribution of coefficients in $f$ the probability of this case is
+    $P_{split} = 2^{D_1 + D_2 - D_1 D_2 - 1}$.
+  \item $f$ factors as $f(x, y) = g(x, y) h(x, y)$. According to conditions of
+    the theorem, $\phi g \ne const$ and $\phi h \ne const$. We have
+    $f_x = (\phi g) (\phi h)$. As we have shown, the probability of this event
+    tends to zero with $D_2 \to \infty$. Applying \cref{lem:factors}, we can say
+    the same about probability of this case.
+  \end{itemize}
+  Hence, the probability of the first case tends to one, with increase in
+  $D_1, D_2$. If $f$ is irreducible, there is no two or more non-palindrome
+  factors of $f$, hence $A$ does not have non-trivial collisions.
+\end{proof}
+This theorem also can be proved for multidimensional arrays by recursively
+applying the same argument.
 
 Despite the probability of ``meeting'' a random polynomial which has non-trivial
 collisions in the two-point function is decreasing with increase of its degree,
@@ -504,6 +499,124 @@ integer $k > 0$ also has its coefficients in $\{0, 1\}$.
 \end{example}
 
 \section{Results}
+We have written a program in Common Lisp language
+(\url{https://github.com/fatimp/ac-collisions-mt}) which searches for collisions
+in the two-point correlation functions for random sequences of 0's and 1's with
+the first and the last elements being equal to 1. The number of collisions for
+each length are present in \cref{tab:numbers}. Some examples of non-trivial
+collisions are in \cref{tab:collisions}.
+\begin{table}[!pt]
+  \centering
+  \begin{tabular}{|c|c|c||c|c|c|}
+    \hline
+    $d$ & $N_{col}$ & $N_{irred}$ & $d$ & $N_{col}$ & $N_{irred}$\\
+    \hline
+    \hline
+    25 & 20040 & 15146508 & 38 & 344 & 16269320 \\
+    \hline
+    26 & 13698 & 15400557 & 39 & 278 & 16137897 \\
+    \hline
+    27 & 10787 & 15241401 & 40 & 173 & 16454421 \\
+    \hline
+    28 & 7615 & 15656751 & 41 & 128 & 16257667 \\
+    \hline
+    29 & 5808 & 15365485 & 42 & 89 & 16565040 \\
+    \hline
+    30 & 4199 & 15883361 & 43 & 62 & 16383822 \\
+    \hline
+    31 & 3285 & 15595498 & 44 & 39 & 16634958 \\
+    \hline
+    32 & 2315 & 16023603 & 45 & 39 & 16511214 \\
+    \hline
+    33 & 1782 & 15821891 & 46 & 23 & 16630491 \\
+    \hline
+    34 & 1161 & 15988106 & 47 & 34 & 16488227 \\ 
+    \hline
+    35 & 926 & 15811952 & 48 & 20 & 16860506 \\
+    \hline
+    36 & 589 & 16356337 & 49 & 9 & 16691221 \\
+    \hline
+    37 & 471 & 16102018 & 50 & 13 & 16829791 \\
+    \hline
+  \end{tabular}
+  \caption{The number of non-trivial collisions in the two-point correlation
+    function and the number of irreducible polynomials for degrees
+    $d = [25 \dots 50]$. The degree $d$ equals to the length of a random
+    sequence minus one. The collisions were calculated by making $2 \cdot 10^7$
+    random trials for each degree (polynomials were taken with repetitions).}
+  \label{tab:numbers}
+\end{table}
+\begin{table}[!pt]
+  \centering
+  \begin{tabular}{|c|r|}
+    \hline
+    $d$ & Sequences which are non-trivial collisions \\
+    \hline
+    25 & 10000001000100000000100101 \\
+    & 10000100010010000000000101 \\
+    \hline
+    & 10111111011111101111110011 \\
+    & 11111011111101111110111001 \\
+    \hline
+    30 & 1000010000010100000000000001001 \\
+    & 1000000010000010000000000101001 \\
+    \hline
+    & 1110111101010001100101100001111 \\
+    & 1111110101001011001000111000111 \\
+    & 1111010010000111000110111010111 \\
+    & 1110011100001001010111010011111 \\
+    \hline
+    & 1110111111010101011011110111111 \\
+    & 1111110111010110101011111110111 \\
+    \hline
+    & 1001001011011110110100110100001 \\
+    & 1000010010110110110101111001001 \\
+    \hline
+    40 & 10010110000000000000000010011011001001011 \\
+    & 11010010000000000000000011011001001101001 \\
+    \hline
+    & 10111111010101111111101010011111111100011 \\
+    & 10010101111111101010111111011100011111111 \\
+    \hline
+    & 11011010010011101100011100101100110100001 \\
+    & 10010010110111001000111101001100101100011 \\
+    \hline
+  \end{tabular}
+  \caption{Examples of non-trivial collisions in the two-point correlation
+    function.}
+  \label{tab:collisions}
+\end{table}
+
+We have experimentally computed the probability of a sequence not having
+non-trivial collisions and compared it with results of \cref{the:sequence}. The
+result of comparison (taking $c = 0.148, \beta = 3.373$) is on
+\cref{fig:prob-comparison}.
+\begin{figure}
+  \centering
+  \includegraphics[width=0.5\linewidth]{images/prob.png}
+  \caption[]{Probability of a sequence of 0's and 1's with length $d+1$ and the
+    first and last elements being equal to 1 not to have non-trivial collisions
+    in the two-point correlation function: the esimate from \cref{the:sequence}
+    and a computer experiment.}
+  \label{fig:prob-comparison}
+\end{figure}
+
+For two-dimensional arrays we were able to find non-trivial collisions for array
+sizes at most $7 \times 7$ (with $10^6$ trials). One of such collisions is on
+\cref{fig:collision-2d}.
+\begin{figure*}[tp]
+  \centering
+  \includegraphics[width=0.3\linewidth]{images/collision-2d-1.png}
+  \hfill
+  \includegraphics[width=0.3\linewidth]{images/collision-2d-2.png}
+  \hfill
+  \includegraphics[width=0.3\linewidth]{images/collision-2d-s2.png}
+  \caption[]{Two 2-dimensional $7 \times 7$ arrays (left, middle), having the
+    same two-point correlation function (right).}
+  \label{fig:collision-2d}
+\end{figure*}
+
+\newpage
 
 \bibliographystyle{elsarticle-num}
 \bibliography{paper}
