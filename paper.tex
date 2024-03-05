@@ -112,14 +112,14 @@ When reconstructing a two-phase porous medium from its correlation function, it
 is important to know to what extent a reconstruction will resemble the original
 image. Consider the following definition:
 \begin{definition}
-  Arrays $A$ and $B$ of the same dimensionality have a collision if they have
-  the same values of the two-point correlation function in all points of its
-  definition, but $A \ne B$.
+  Arrays $A$ and $B$ of the same dimensionality have a collision in the
+  two-point correlation function if they have the same values of this function
+  in all points of its definition, but $A \ne B$.
 \end{definition}
 
 Turns out that every array $A$ has a collision of two specific forms, which we
-will discuss after describing of a mathematical framework which will help us in
-the analysis.
+will discuss after describing a mathematical framework which will help us in the
+analysis.
 
 \begin{definition}
   A Z-transform of a sequence $\{a_0, a_1, \dots, a_n\}$ is a polynomial
@@ -129,8 +129,8 @@ Z-transform is much like the discrete Fourier transform, particulary it has the
 same convolution theorem:
 \begin{theorem}
   If $g(z)$ and $h(z)$ are images of sequences $a$ and $b$ under Z-transform,
-  then $g(z)h(z) = f(z)$ where $f(z)$ is an image of $a*b$ under Z-transform,
-  where $a*b$ is a discrete convolution of $a$ and $b$:
+  then $g(z)h(z) = f(z)$ where $f(z)$ is an image of $a*b$ under Z-transform
+  and $a*b$ is a discrete convolution of $a$ and $b$:
   \begin{equation*}
     (a*b)_k = \sum_{i=0}^{n} a_i b_{k-i}
   \end{equation*}
@@ -151,7 +151,7 @@ using \cref{th:conv}.
   s_2(z) = f(z)f(z^{-1})
   \label{eq:s2z}
 \end{equation}
-Making a substitution $t^{-1} = z + z^{-1}$ in inverting $s_2(t)$ we will get a
+Making a substitution $t^{-1} = z + z^{-1}$ and inverting $s_2(t)$ we will get a
 sequence $S_2(r) = (S_2(0), S_2(1), S_2(2), \dots)$ up to a normalization by
 $N(r)$. The meaning of this sequence is a number of positive elements in $a$
 distanced by $r$.
@@ -188,7 +188,7 @@ The set
 \end{equation}
 and a binary operation $\circ$ (composition) form a group of transforms of $a$
 which do not change the two-point function. Its neutral element is $S_0$ and the
-associativity and invertibility are trivial to proof.
+associativity and invertibility are trivial to prove.
 
 The transform $R$ means a reversion of a sequence, i.e. writing it ``the other
 way around''. The transform $S_k$ means shifting a sequence to the right by $k$
@@ -199,10 +199,10 @@ trivial collisions like that.
 
 To find non-trivial collisions we firstly introduce a change of variables
 $x = z^{-1}$ which is justified by a symmetry of \cref{eq:s2z}. Secondly we
-introduce a notion of a reverse \textcolor{red}{RECIPROCAL!} of a polynomial and palindrome polynomials.
+introduce a notion of a reciprocal polynomial and palindrome polynomials.
 \begin{definition}
-  A reverse of a polynomial $f(x)$ is a polynomial $x^{\deg f}f(x^{-1})$. A
-  polynomial is called a palindrome if it is equal to its reverse.
+  A reciprocal polynomial of $f(x)$ is a polynomial $x^{\deg f}f(x^{-1})$. A
+  polynomial is called a palindrome if it is equal to its reciprocal.
 \end{definition}
 Examples of palindrome polynomials include $x$, $x + 1$, $x^2 - 2x + 1$, but not
 $x^3+x+1$.
@@ -216,8 +216,8 @@ coefficient is zero, then a monomial $x^n$ divides $f$, and the following
 construction can be applied to $\hat{f} = f / x^n$ which has the same
 correlation function as $f$.
 
-A reverse of $f(x)$ has the same degree as $f$. Suppose $f$ factors into $M$
-different factors in $\mathbb{Z}[x]$:
+A reciprocal polynomial of $f(x)$ has the same degree as $f$. Suppose $f$
+factors into $M$ different factors in $\mathbb{Z}[x]$:
 \begin{equation*}
   f(x) = \prod_{i=1}^M f_i(x)
 \end{equation*}
@@ -227,7 +227,7 @@ The image of the two-point function is then
 \end{equation*}
 Let now select $1 \le L < M$ non-palindrome factors
 $f_{r_1}, f_{r_2}, \dots, f_{r_L}$ of $f$ and replace them with their
-reverses. Obviously, the resulting correlation function won't change:
+reciprocals. Obviously, the resulting correlation function won't change:
 \begin{equation*}
   s(x) = \underbrace{\prod_{i=1}^L x^{\deg f_{r_i}} f_{r_i}(x^{-1}) \prod_{i=1}^{M-L} f_{o_i}(x)}_{\tilde{f}(x)}
   \underbrace{\prod_{i=1}^L x^{-\deg f_{r_i}} f_{r_i}(x) \prod_{i=1}^{M-L} f_{o_i}(x^{-1})}_{\tilde{f}(x^{-1})}
@@ -240,8 +240,9 @@ restrict the group of transforms \cref{eq:group} to a subgroup $\{S_0, R\}$
 because a non-zero shift will change the degree of $f$ which is not allowed. We
 have two possible outcomes regarding $\tilde{f}$:
 \begin{itemize}
-\item Only one factor in $f_{r_1}, \dots, f_{r_L}$ is not a palindrome. This
-  gives us $\tilde{f}(x) = f(x^{-1})$ which is a trivial collision.
+\item Only at most one factor in $f_{r_1}, \dots, f_{r_L}$ is not a
+  palindrome. This gives us $\tilde{f}(x) = f(x^{-1})$ which is a trivial
+  collision.
 \item At least two factors in $f_{r_1}, \dots, f_{r_L}$ are not palindromes. In
   this case $\tilde{f} \ne f$ and cannot be obtained from $f$ using transforms
   in the subgroup $\{S_0, R\}$.
@@ -253,7 +254,8 @@ have two possible outcomes regarding $\tilde{f}$:
   and evaluating $S_2(0)$ gives us the desired result. We also make a conjecture
   that $f$ and $\tilde{f}$ have the same number of non-zero coefficients and
   thus, all coefficients of $\tilde{f}$ are either $0$ or $1$.}
-\textcolor{red}{It's better to find a proof for this claim}.
+\textcolor{red}{It's better to find a proof for this claim, but no bad things
+  can happen, if we cannot.}
 
 Now it must be clear how to find all the non-trivial collisions of $f$. To do so
 one must follow \cref{alg:collisions}.
@@ -263,22 +265,22 @@ one must follow \cref{alg:collisions}.
   \label{alg:collisions}
   \begin{algorithmic}[1]
     \Procedure{$Collisions$}{$f$}
-    \State $fs \gets factor(f) \in \mathbb{Z}[x]$
+    \State $fs \gets factor(f \in \mathbb{Z}[x])$
     \State $ps \gets filter(isPalindrome, fs)$
-    \State $nps \gets fs \setminus d$
+    \State $nps \gets fs \setminus ps$
     \If{$length(nps) \le 1$}
     \State \textbf{return} $f$ has only trivial collisions
     \EndIf
     \State $(np:nps') \gets nps$
     \State $f' \gets np \times \prod ps$
-    \State $cs \gets \text{all possible combinations of $nps'$ or reverses}$
+    \State $cs \gets \text{all possible combinations of $nps'$ or reciprocals}$
     \State \textbf{return} $map(f'\times, cs)$
     \EndProcedure
   \end{algorithmic}
 \end{algorithm}
-Here ``all possible combinations of $nps'$ or reverses'' needs
+Here ``all possible combinations of $nps'$ or reciprocals'' needs
 clarification. For each polynomial in $nps'$ either that polynomial or its
-reverse is taken in a combination of factors $c$ and $cs$ is a list of all
+reciprocal is taken in a combination of factors $c$ and $cs$ is a list of all
 possible $c$'s. If $f$ has $L$ non-palindrome factors as before, we get
 $2^{L-1}$ polynomials (including $f$) which have the same two-point function as
 $f$.
@@ -326,8 +328,7 @@ of the two-point function under Z-transform is
   \label{eq:s2z-md}
 \end{equation}
 
-The same group \cref{eq:group} of transforms \cref{eq:group-elts} gives rise to
-trivial collisions in the two-point function, where
+The same group \cref{eq:group} of transforms \cref{eq:group-elts}:
 \begin{equation}
   \begin{aligned}
     R&: f(z_1, \dots, z_n) \rightarrow f(z_1^{-1}, \dots, z_n^{-1}) \\
@@ -335,10 +336,11 @@ trivial collisions in the two-point function, where
   \end{aligned}
   \label{eq:group-elts-md}
 \end{equation}
-where $R$ means a ``reversion'' of $A$ and $S_{k_1, \dots, k_n}$ translates $A$
-by a vector $(k_1, \dots, k_n)$. Now, adopting the definition of a palindrome to
-the multidimensional case we can apply a change in variables $x_i = z_i^{-1}$
-and the \cref{alg:collisions} to finding non-trivial collisions.
+gives rise to trivial collisions in the two-point function, where $R$ means a
+``reversion'' of $A$ and $S_{k_1, \dots, k_n}$ translates $A$ by a vector
+$(k_1, \dots, k_n)$. Now, adopting the definition of a palindrome to the
+multidimensional case we can apply a change in variables $x_i = z_i^{-1}$ and
+the \cref{alg:collisions} to finding non-trivial collisions.
 
 \begin{example}
   Consider a two-phase two-dimensional image \cref{fig:2d-example}. Its image
@@ -381,7 +383,7 @@ collisions in periodic boundary conditions.
 
 \section{Probability of encountering a polynomial with non-trivial collision.}
 
-Suppose $f \in \mathbb{Z}$ is a random polynomial with independent uniformly
+Suppose $f \in \mathbb{Z}[x]$ is a polynomial with independent uniformly
 distributed random coefficients in $\{0, 1\}$ with the free coefficient being
 equal to $1$. It is known, that the probability of $f$ being irreducible tends
 to $1$ with $d = \deg f \to \infty$ \cite{konyagin1999number}.
@@ -435,7 +437,7 @@ auxiliary result first.
   \label{lem:factors}
   Let $\phi$ be a homomorphism from $R[x]$ to $R'[x]$ and $\phi f \ne const$ if
   $f \ne const$. When $f$ has no more irreducible factors (counted with their
-  repetitions) than $\phi f$.
+  multiplicity) than $\phi f$.
 \end{lemma}
 \begin{proof}
   Suppose $f = \prod_{k=1}^n f_k^{m_k}$ where $f_k$ is irreducible in
@@ -469,8 +471,9 @@ Now we get our main result:
     $\phi h = h(0) = const$ and \cref{lem:factors} cannot be applied. According
     to distribution of coefficients in $f$ the probability of this case is
     $P_{split} = 2^{D_1 + D_2 - D_1 D_2 - 1}$.
-  \item $f$ factors as $f(x, y) = g(x, y) h(x, y)$. According to conditions of
-    the theorem, $\phi g \ne const$ and $\phi h \ne const$. We have
+  \item $f$ factors as $f(x, y) = g(x, y) h(x, y)$. According to conditions on
+    the coefficients $\deg_x g > 0$ and $\deg_x h > 0$, therefore
+    $\phi g \ne const$ and $\phi h \ne const$. We have
     $f_x = (\phi g) (\phi h)$. As we have shown, the probability of this event
     tends to zero with $D_2 \to \infty$. Applying \cref{lem:factors}, we can say
     the same about probability of this case.
