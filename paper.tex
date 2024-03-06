@@ -402,7 +402,7 @@ Another useful result is that for large enough $d$ the probability
 of $f$ having factorization $\Phi \tilde{f}$ where $\tilde{f}$ is an irreducible
 polynomial and $\Phi$ is a product of cyclotomic polynomials is at least
 \begin{equation}
-  p = 1 - 2\exp(-c(\log d)^{\beta - 2})
+  P = 1 - 2\exp(-c(\log d)^{\beta - 2})
   \label{eq:prob-cyc-1}
 \end{equation}
 for some $c > 0$ and $\beta > 3$ if $\zeta_K$ has no zeros $\rho$ with
@@ -418,14 +418,14 @@ correlation functions.
   exception of the first and the last elements which are 1's. Then, with
   probability at least
   \begin{equation*}
-    p = 1 - 2\exp(-c(\log d)^\beta)
+    P = 1 - 2\exp(-c(\log d)^\beta)
   \end{equation*}
   for some $c > 0$, $\beta > 1$ the sequence $A$ of the length $d+1$ does not
   have non-trivial collisions in the two-point correlation function.
 \end{theorem}
 \begin{proof}
   Let $f(x)$ be an image of $A$ under Z-transform and a change of variables
-  $x = z^{-1}$. With probability at least $p$ it factors in $\mathbb{Z}[x]$ as
+  $x = z^{-1}$. With probability at least $P$ it factors in $\mathbb{Z}[x]$ as
   $\Phi \tilde{f}$, where $\Phi$ is a product of cyclotomic polynomials and
   $\tilde{f}$ is irreducible. All cyclotomic polynomials with exception of
   $\Phi_1 = x - 1$ are palindromes. $\Phi_1$ does not divide $f$ because
@@ -460,7 +460,7 @@ Now we get our main result:
   change in variables $x = z^{-1}$. Then $A$ does not have non-trivial
   collisions in the two-point correlation function with probability at least
   \begin{equation}
-    p = 1 - \sqrt{\frac{2}{\pi (D_1 - 1)}}
+    P = 1 - \sqrt{\frac{2}{\pi (D_1 - 1)}}
     \label{eq:main-result}
   \end{equation}
 \end{theorem}
@@ -472,7 +472,7 @@ Now we get our main result:
   $f_x(x) = \phi f = f(x,0)$. Under conditions of the theorem $f(0) = 1$ and
   $\deg f_x = d$.  According to \cref{eq:prob-irr} we have
   \begin{equation*}
-    p\{\text{$f_x$ is irreducible}\} = 1 - \sqrt{\frac{2}{\pi d}} + O(d^{-1})
+    P\{\text{$f_x$ is irreducible}\} = 1 - \sqrt{\frac{2}{\pi d}} + O(d^{-1})
   \end{equation*}
   Now we need to prove a similar result for $f$.
 
@@ -482,8 +482,8 @@ Now we get our main result:
   \item $f$ factors as $f(x, y) = g(x)h(y)$. In this case
     $\phi h = h(0) = const$ and \cref{lem:factors} cannot be applied. According
     to distribution of coefficients in $f$ the probability of this case is
-    $p_{split} = 2^{D_1 + D_2 - D_1 D_2 - 1}$. For any fixed integer $D_2 > 1$
-    we have $p_{split} = o(D_1^{-1})$. For $D_2 = 1$ we have $f = f_x$ and
+    $P_{split} = 2^{D_1 + D_2 - D_1 D_2 - 1}$. For any fixed integer $D_2 > 1$
+    we have $P_{split} = o(D_1^{-1})$. For $D_2 = 1$ we have $f = f_x$ and
     \cref{eq:prob-irr} is applicable directly to $f$.
   \item $f$ factors as $f(x, y) = g(x, y) h(x, y)$. According to conditions on
     the coefficients $\deg_x g > 0$ and $\deg_x h > 0$, therefore
