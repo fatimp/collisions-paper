@@ -14,13 +14,13 @@ jobs:
       - name: Compile LaTeX document
         uses: dante-ev/latex-action@latest
         with:
-          root_file: paper-correlations.tex
+          root_file: paper.tex
       - name: Upload
         uses: svenstaro/upload-release-action@v2
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
-          file: paper-correlations.pdf
-          asset_name: paper-correlations.pdf
+          file: paper.pdf
+          asset_name: paper.pdf
           tag: ${{ github.ref }}
           overwrite: true
           body: "Paper draft"
