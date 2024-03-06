@@ -389,7 +389,9 @@ equal to $1$. It is known, that the probability of $f$ being irreducible tends
 to $1$ with $d = \deg f \to \infty$ \cite{konyagin1999number}.
 
 Breuillard et~al. \cite{breuillard2019irreducibility} give the following
-approximation for this probability based on extended Riemann hypothesis:
+approximation for this probability if the Riemann hypothesis holds for the
+Dedekind zeta function $\zeta_K$ for all number fields of the form
+$K = \mathbb{Q}(a)$, where $a$ is a root of $f$.
 \begin{equation}
   P(\text{$f$ is irreducible}) = 1 - \sqrt{\frac{2}{\pi d}} + O(d^{-1})
   \label{eq:prob-irr}
@@ -451,9 +453,12 @@ Now we get our main result:
 \begin{theorem}
   Let $A$ be a 2-dimensional $D_1 \times D_2$ array of 0's and 1's where each
   element is chosen randomly and independently with probability $1/2$ with
-  exception of two elements $A[0, 0]$ and $A[D_1 - 1, 0]$, which are 1's. Then
-  $A$ does not have non-trivial collisions in the two-point correlation function
-  with probability at least
+  exception of two elements $A[0, 0]$ and $A[D_1 - 1, 0]$, which are
+  1's. Suppose the Riemann hypothesis for the Dedekind zeta function $\zeta_K$
+  holds for all fields $K = \mathbb{Q}(a)$ where $a$ is any root of $f_x(x)$ and
+  $f_x(x)$ is an image of the slice $A[0:D_1 -1, 0]$ under Z-transform and a
+  change in variables $x = z^{-1}$. Then $A$ does not have non-trivial
+  collisions in the two-point correlation function with probability at least
   \begin{equation}
     p = 1 - \sqrt{\frac{2}{\pi (D_1 - 1)}}
     \label{eq:main-result}
@@ -463,9 +468,9 @@ Now we get our main result:
   Let $f(x, y)$ be an image of $A$ under Z-transform and a change of variables
   $x = z_1^{-1}, y = z_2^{-1}$ with $\deg_x f = d$, where $d = D_1 - 1$. Let
   $\phi f = f \mod y$ be a ``partial evaluation'' homomorphism from
-  $\mathbb{Z}[x, y]$ to $\mathbb{Z}[x]$. Let $f_x(x) = \phi f = f(x,0)$. Under
-  conditions of the theorem $f(0) = 1$ and $\deg f_x = d$.  According to
-  \cref{eq:prob-irr} we have
+  $\mathbb{Z}[x, y]$ to $\mathbb{Z}[x]$. Oviously,
+  $f_x(x) = \phi f = f(x,0)$. Under conditions of the theorem $f(0) = 1$ and
+  $\deg f_x = d$.  According to \cref{eq:prob-irr} we have
   \begin{equation*}
     p\{\text{$f_x$ is irreducible}\} = 1 - \sqrt{\frac{2}{\pi d}} + O(d^{-1})
   \end{equation*}
