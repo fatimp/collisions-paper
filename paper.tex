@@ -146,10 +146,12 @@ using \cref{th:conv}.
   s_2(z) = f(z)f(z^{-1})
   \label{eq:s2z}
 \end{equation}
-Making a substitution $t^{-1} = z + z^{-1}$ and inverting Z-transform for
-$s_2(t)$ we will get a sequence $S_2(r) = (S_2(0), S_2(1), S_2(2), \dots)$ up to
-a normalization by $N(r)$. The meaning of this sequence is a number of positive
-elements in $a$ distanced by $r$.
+Because $S_2(r) = S_2(-r)$ it is convenient to make a substitution $t^{-1} = z +
+z^{-1}$ and consider a function of a non-negative argument. Inverting
+Z-transform for $s_2(t)$ we will get a sequence
+$S_2(r) = (S_2(0), S_2(1), S_2(2), \dots)$ up to a normalization by $N(r)$. The
+meaning of this sequence is a number of positive elements in $a$ distanced by
+$r$.
 \begin{example}
   Let $a$ be a sequence $(1, 0, 1, 0, 0, 1)$. Its Z-transform is
   $f(z) = 1 + z^{-2} + z^{-5}$.
