@@ -222,9 +222,9 @@ The image of the two-point function is then
 \begin{equation*}
   s(x) = f(x)f(x^{-1}) = \prod_{i=1}^M f_i(x) \prod_{i=1}^M f_i(x^{-1})
 \end{equation*}
-Let now select $1 \le L < M$ non-palindrome factors
-$f_{r_1}, f_{r_2}, \dots, f_{r_L}$ of $f$ and replace them with their
-reciprocals. Obviously, the resulting correlation function won't change:
+Let now select all non-palindrome factors $f_{r_1}, f_{r_2}, \dots, f_{r_L}$ of
+$f$, $0 \le L \le M$ and replace them with their reciprocals. Obviously, the
+resulting correlation function won't change:
 \begin{equation*}
   s(x) = \underbrace{\prod_{i=1}^L x^{\deg f_{r_i}} f_{r_i}(x^{-1}) \prod_{i=1}^{M-L} f_{o_i}(x)}_{\tilde{f}(x)}
   \underbrace{\prod_{i=1}^L x^{-\deg f_{r_i}} f_{r_i}(x) \prod_{i=1}^{M-L} f_{o_i}(x^{-1})}_{\tilde{f}(x^{-1})}
@@ -237,10 +237,10 @@ restrict the group of transforms \cref{eq:group} to a subgroup $\{S_0, R\}$
 because a non-zero shift will change the degree of $f$ which is not allowed. We
 have two possible outcomes regarding $\tilde{f}$:
 \begin{itemize}
-\item Only at most one factor in $f_{r_1}, \dots, f_{r_L}$ is not a
-  palindrome. This gives us $\tilde{f}(x) = f(x^{-1})$ which is a trivial
+\item Only at most one factor of $\tilde{f}$ is not a palindrome
+  ($L \le 1$). This gives us $\tilde{f}(x) = f(x^{-1})$ which is a trivial
   collision.
-\item At least two factors in $f_{r_1}, \dots, f_{r_L}$ are not palindromes. In
+\item At least two factors of $\tilde{f}$ are not palindromes ($L > 1$). In
   this case $\tilde{f} \ne f$ and cannot be obtained from $f$ using transforms
   in the subgroup $\{S_0, R\}$.
 \end{itemize}
