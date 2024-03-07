@@ -180,12 +180,12 @@ two-point correlation function:
 \end{equation}
 The set
 \begin{equation}
-  G = \{R, S_0, S_1, S_{-1}, \dots \}
+  G = \{R, Id, S_1, S_{-1}, \dots \}
   \label{eq:group}
 \end{equation}
 and a binary operation $\circ$ (composition) form a group of transforms of $a$
-which do not change the two-point function. Its neutral element is $S_0$ and the
-associativity and invertibility are trivial to prove.
+which do not change the two-point function. Its neutral element $Id = S_0$ and
+the associativity and invertibility are trivial to prove.
 
 The transform $R$ means a reversion of a sequence, i.e. writing it ``the other
 way around''. The transform $S_k$ means shifting a sequence to the right by $k$
@@ -233,7 +233,7 @@ where $o_1, o_2, \dots, o_{M-L}$ run through indices of original (not replaced)
 factors. Now recombining factors into $\tilde{f}(x)$ and $\tilde{f}(x^{-1})$ we
 obtain a polynomial $\tilde{f}$ with the same degree as $f$ and $f(0) = \tilde{f}(0)$.
 Now note that with this additional demand on the free coefficient, we can
-restrict the group of transforms \cref{eq:group} to a subgroup $\{S_0, R\}$
+restrict the group of transforms \cref{eq:group} to a subgroup $\{Id, R\}$
 because a non-zero shift will change the degree of $f$ which is not allowed. We
 have two possible outcomes regarding $\tilde{f}$:
 \begin{itemize}
@@ -242,7 +242,7 @@ have two possible outcomes regarding $\tilde{f}$:
   collision.
 \item At least two factors of $\tilde{f}$ are not palindromes ($L > 1$). In
   this case $\tilde{f} \ne f$ and cannot be obtained from $f$ using transforms
-  in the subgroup $\{S_0, R\}$.
+  in the subgroup $\{Id, R\}$.
 \end{itemize}
 
 \textcolor{blue}{It is trivial to prove that $\sum_if_i^2 = \sum_i\tilde{f}_i^2$
