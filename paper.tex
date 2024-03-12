@@ -1,9 +1,7 @@
-\documentclass[12pt, a4paper]{article}
+\documentclass[preprint,amsmath,amssymb,aps,pre,showkeys,showpacs]{revtex4-1}
 \usepackage[english]{babel}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
-\usepackage{amsmath}
-\usepackage{amssymb}
 \usepackage{amsthm}
 \usepackage{hyperref}
 \usepackage{cleveref}
@@ -20,8 +18,8 @@
 
 \begin{document}
 \title{When two-point correlation function fails to describe a structure...}
-\author{Biba and Boba}
-\maketitle
+\author{Biba}
+\author{Boba}
 
 \begin{abstract}
   In this paper the two-point correlation function $S_2$ for arrays which
@@ -37,6 +35,8 @@
   probability of finding non-trivial collision by randomly picking the input
   array tends to zero with increase in the input array's dimensions.
 \end{abstract}
+
+\maketitle
 
 \section{Introduction}
 In this paper we designate polynomials either $f$ or $f(x)$. The latter
@@ -311,7 +311,7 @@ being equal to 0 or 1:
 
 Now it must be clear how to find all the non-trivial collisions of $f$. To do so
 one must follow \cref{alg:collisions}.
-\begin{algorithm}
+\begin{algorithm}[H]
   \caption{An algorithm for finding non-trivial collisions of $f$ in the
     two-point correlation function.}
   \label{alg:collisions}
@@ -684,8 +684,5 @@ sizes at most $7 \times 7$ (with $10^6$ trials). One of such collisions is on
   \label{fig:collision-2d}
 \end{figure*}
 
-\newpage
-
-\bibliographystyle{elsarticle-num}
 \bibliography{paper}
 \end{document}
