@@ -245,14 +245,52 @@ have two possible outcomes regarding $\tilde{f}$:
   in the subgroup $\{Id, R\}$.
 \end{itemize}
 
-\textcolor{blue}{It is trivial to prove that $\sum_if_i^2 = \sum_i\tilde{f}_i^2$
-  where $f_i$ and $\tilde{f}_i$ are coefficients of $f$ and $\tilde{f}$
-  respectively. Indeed, $f$ and $\tilde{f}$ have the same correlation function,
-  and evaluating $S_2(0)$ gives us the desired result. We also make a conjecture
-  that $f$ and $\tilde{f}$ have the same number of non-zero coefficients and
-  thus, all coefficients of $\tilde{f}$ are either $0$ or $1$.}
-\textcolor{red}{It's better to find a proof for this claim, but no bad things
-  can happen, if we cannot.}
+\textcolor{red}{The idea of proof for this lemma is a contribution of Kolya and
+  Oleg}.
+Now the following lemma shows that $\tilde{f}$ is a polynomial with coefficients
+being equal to 0 or 1:
+\begin{lemma}
+  Let $f \in \mathbb{Z}[x]$ is a polynomial with coefficients in $\{0, 1\}$
+  which factors as $f(x) = \prod_{i=1}^n f_i(x)$. A polynomial
+  $\tilde{f}(x) = \prod_k f_k(x) \prod_l x^{\deg f_l} f_l(x^{-1})$ where $k$
+  runs through some subset $K$ of $N = \{1, \dots, n\}$ and $l$ runs through
+  $N \setminus K$ has also its coefficients in $\{0, 1\}$.
+\end{lemma}
+\begin{proof}
+  In this proof we assume $f(0) = 1$ for simplicity.
+
+  Suppose $n = 1$. Then $\tilde{f}$ is either the reciprocal of $f$ or $f$ itself.
+
+  Suppose $n = 2$ and write $f = gh$. In two trivial cases when $K = \emptyset$
+  or $K = N$ we have $\tilde{f}$ to be equal either the reciprocal of $f$ or
+  $f$. Let $\tilde{f}(x) = \tilde{g}(x)h(x)$,
+  $\tilde{g}(x) = x^{\deg g}g(x^{-1})$. As shown above, $f$ and $\tilde{f}$ have
+  the same two-point correlation functions, i.e.
+  $s_f(t) = s_{\tilde{f}}(t)$. Comparing free coefficients of $s_f(t)$ and
+  $s_{\tilde{f}}(t)$ we obtain the following relation for coefficients of $f$:
+  \begin{equation}
+    \sum_{k=0}^d f_k^2 = \sum_{k=0}^d \tilde{f}_k^2
+    \label{eq:squares-equal}
+  \end{equation}
+  where $d = \deg f = \deg \tilde{f}$. Now we have this chain of equalities
+  \begin{equation}
+    \begin{aligned}
+    \sum_{k=0}^d f_k = f(1) &= g(1) h(1) = \sum_{k=0}^{d_g} g_k \sum_{k=0}^{d_h} h_k \\
+    = \sum_{k=0}^{d_g} g_{d_g-k} \sum_{k=0}^{d_h} h_k &= \tilde{g}(1) h(1) =
+    \tilde{f}(1) = \sum_{k=0}^d \tilde{f}_k
+    \end{aligned}
+    \label{eq:coeff-equal}
+  \end{equation}
+
+  For any $m \in \mathbb{Z} \setminus \{0, 1\}$ we have $m^2 > m$. Taking into
+  account \cref{eq:coeff-equal} and letting any coefficient of $\tilde{f}$ be
+  in set $\mathbb{Z} \setminus \{0, 1\}$ we get a contradiction with
+  \cref{eq:squares-equal}. This contradiction proves this case.
+
+  Now suppose $n > 2$. We can construct products
+  $\tilde{g}(x) = \prod_l x^{\deg f_l }f_l(x^{-1})$ and $h(x) = \prod_k f_k(x)$
+  and continue with the proof for $n = 2$.
+\end{proof}
 
 Now it must be clear how to find all the non-trivial collisions of $f$. To do so
 one must follow \cref{alg:collisions}.
