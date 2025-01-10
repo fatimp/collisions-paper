@@ -423,8 +423,7 @@ shift by $k$ elements to the right.
 \begin{example}
   Consider a sequence $(0, 1, 1, 1, 0, 1, 1)$ of length $7$. The image of its
   correlation function under Z-transform is
-  $s_2(z) = 5 + 3(z+z^{-1}) + 2(z^2 + z^{-2}) + 2(z^3 + z^{-3}) + 2(z^4 +
-  z^{-4}) + (z^5 + z^{-5})$.
+  $s_2(z) = 5 + 3(z+z^{-1}) + 2(z^2 + z^{-2}) + 2(z^3 + z^{-3}) + 2(z^4 + z^{-4}) + (z^5 + z^{-5})$.
   Taking $s_2(z) \mod x^7-1$ we obtain
   $5 + 3z + 3z^6 + 2z^2 + 2z^5 + 2z^3 + 2z^4 + 2z^4 + 2z^3 + z^5 + z^2 \mod z^7 - 1 = 5 + 3z + 3z^2 + 4z^3 + 4z^4 + 3z^5 + 3z^6$.
   The two-point correlation function is then $(5, 3, 3, 4, 4, 3, 3)$.
@@ -469,14 +468,16 @@ correlation functions.
   exception of the first and the last elements which are 1's. Then, with
   probability at least
   \begin{equation*}
-    P = 1 - 2\exp(-c(\log d)^\beta)
+    P = 1 - 2\exp(-c(\log d)^{\beta-2})
   \end{equation*}
-  for some $c > 0$, $\beta > 1$ the sequence $A$ of the length $d+1$ does not
-  have non-trivial collisions in the two-point correlation function.
+  for some $c > 0$, $\beta > 3$ the sequence $A$ of the length $d+1$ does not
+  have non-trivial collisions in the two-point correlation function if $\zeta_K$
+  has no zeros $\rho$ with $|1 - \rho| < (\log d)^\alpha/d$, $\alpha > \beta$
+  for all $K = \mathbb{Q}(a)$ where $a$ is a root of $f(x)$ which is an image of
+  $A$ under Z-transform and a change of variables $x = z^{-1}$.
 \end{theorem}
 \begin{proof}
-  Let $f(x)$ be an image of $A$ under Z-transform and a change of variables
-  $x = z^{-1}$. With probability at least $P$ it factors in $\mathbb{Z}[x]$ as
+  With probability at least $P$, $f \in \mathbb{Z}[x]$ factors as
   $\Phi \tilde{f}$, where $\Phi$ is a product of cyclotomic polynomials and
   $\tilde{f}$ is irreducible. All cyclotomic polynomials with exception of
   $\Phi_1 = x - 1$ are palindromes. $\Phi_1$ does not divide $f$ because
